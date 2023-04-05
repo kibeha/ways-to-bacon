@@ -1,0 +1,80 @@
+{
+  "version": "2",
+  "templates": [
+    {
+      "name": "ImDB",
+      "configuration": {
+        "visualization": {
+          "filters": [
+            {
+              "_id": 1659737914635,
+              "component": "vertex",
+              "type": "styling",
+              "target": "vertex",
+              "enabled": true,
+              "conditions": {
+                "operator": "and",
+                "conditions": [
+                  {
+                    "property": "label",
+                    "operator": "=",
+                    "value": "MOVIE"
+                  }
+                ]
+              },
+              "properties": {
+                "icons": [
+                  "fa-film"
+                ],
+                "iconColors": [
+                  "white"
+                ],
+                "sizes": [
+                  25
+                ],
+                "label": [
+                  "MOVIE"
+                ]
+              },
+              "aggregation": []
+            },
+            {
+              "_id": 1659737874186,
+              "component": "vertex",
+              "type": "styling",
+              "target": "vertex",
+              "enabled": true,
+              "conditions": {
+                "operator": "and",
+                "conditions": [
+                  {
+                    "property": "label",
+                    "operator": "=",
+                    "value": "ACTOR"
+                  }
+                ]
+              },
+              "properties": {
+                "icons": [
+                  "fa-user-man"
+                ],
+                "iconColors": [
+                  "white"
+                ],
+                "sizes": [
+                  25
+                ],
+                "label": [
+                  "ACTOR"
+                ]
+              },
+              "aggregation": []
+            }
+          ],
+          "charLimit": 15,
+          "version": 9
+        }
+      }
+    }
+  ]
+}

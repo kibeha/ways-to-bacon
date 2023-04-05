@@ -1,6 +1,7 @@
 # Ways to the Bacon
 
 This repository accompanies the presentation "Ways to the Bacon" ( https://bit.ly/bacon_pptx ) by Kim Berg Hansen.
+This branch (New2023) represents updated version co-created and co-presented with Hans Viehmann of Oracle.
 
 This is purely for demonstration. Use it at your own risk and be sure to understand it before using.
 
