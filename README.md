@@ -1,4 +1,4 @@
-# Who's afraid of the Big Bad SQL?
+# Ways to the Bacon
 
 This repository accompanies the presentation "Ways to the Bacon" ( https://bit.ly/bacon_pptx ) by Kim Berg Hansen.
 
