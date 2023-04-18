@@ -1,0 +1,263 @@
+[
+  {
+    "name" : "Bacon/bacon_full",
+    "description" : null,
+    "tags" : null,
+    "version" : "6",
+    "layout" : "zeppelin",
+    "type" : "Default",
+    "readOnly" : false,
+    "snapshot" : false,
+    "template" : "dsrgmn3y",
+    "templateConfig" : "{\"visualization\":{\"filters\":[{\"_id\":1583324064459,\"type\":\"styling\",\"enabled\":true,\"conditions\":{\"operator\":\"and\",\"conditions\":[{\"property\":\"hiddenConnection\",\"operator\":\"*\",\"value\":\"\"}]},\"component\":\"edge\",\"target\":\"edge\",\"properties\":{\"colors\":[\"rgba(0, 0, 0, 0.1)\"],\"style\":[\"dashed\"],\"legendTitle\":[\"Hidden Connection\"]}},{\"_id\":1590499315755,\"type\":\"aggregation\",\"enabled\":true,\"conditions\":{\"operator\":\"and\",\"conditions\":[]},\"component\":\"vertex\",\"target\":\"vertex\",\"properties\":{},\"aggregation\":[{\"source\":\"\",\"type\":\"average\"}]}],\"version\":4}}",
+    "paragraphs" : [
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "order" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%pgql-pgx",
+          "select v2.id as actor_id, v2.actor, count(e) as bacon_number, array_agg(e.actor_id_1) as connect_pth",
+          "from match shortest (v1) -[e]->* (v2)",
+          "on bacon_co_actor_full_graph",
+          "where v1.actor = 'Kevin Bacon (I)'",
+          "order by bacon_number desc, v2.id"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : "[{\"raw\":{},\"visualization\":{\"graphAction\":{\"graphName\":\"BACON_SMALL\",\"lastRun\":1630407766660},\"viewTransform\":[[130.1099750105039,27.775532705556955,0.7759564985883151,1182]],\"lastColumns\":[\"ACTOR\"],\"version\":8},\"table\":{\"pageSize\":25,\"lastColumns\":[\"ACTOR_ID\",\"ACTOR\",\"BACON_NUMBER\",\"CONNECT_PTH\"]}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1681805630616,
+          "endTime" : 1681805647482,
+          "interpreter" : "pgql-pgx",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "{\"table\":\"ACTOR_ID\\tACTOR\\tBACON_NUMBER\\tCONNECT_PTH\\n13044\\tVictoria Poplawski (II)\\t9\\t[1262381, 2649045, 925060, 480858, 484505, 533780, 2680553, 2694538, 13044]\\n499753\\tChloe Burgos\\t9\\t[1262381, 2649045, 925060, 480858, 484505, 533780, 2680553, 2694538, 499753]\\n562923\\tEmily Watrobsky\\t9\\t[1262381, 2649045, 925060, 480858, 484505, 533780, 2680553, 2694538, 562923]\\n1039882\\tJonathan Santos (VI)\\t9\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 327969, 1039882]\\n1565005\\tHangoro Ichiza Sakata\\t9\\t[630674, 863932, 2009564, 2632524, 922760, 2214110, 958145, 1097850, 1565005]\\n1967726\\tFrancirene Lima\\t9\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 327969, 1967726]\\n2224046\\tRafael Silva (VIII)\\t9\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 327969, 2224046]\\n2275944\\tJoao Vitor Souza\\t9\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 327969, 2275944]\\n2315054\\tGabriel Deodato\\t9\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 327969, 2315054]\\n2477682\\tBarbara Xavier\\t9\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 327969, 2477682]\\n2500312\\tHannah Ott (II)\\t9\\t[1262381, 2649045, 925060, 480858, 484505, 533780, 2680553, 2694538, 2500312]\\n2747688\\tGeorgia Jones (V)\\t9\\t[1262381, 2649045, 925060, 480858, 484505, 533780, 2680553, 2694538, 2747688]\\n48\\tMohammad Abdeen\\t8\\t[1482276, 1904479, 1390342, 199701, 209095, 581753, 864265, 48]\\n13043\\tVictoria Poplawski (I)\\t8\\t[1262381, 2649045, 925060, 480858, 484505, 533780, 2680553, 13043]\\n21199\\tAaron Kozak (II)\\t8\\t[1323924, 1648262, 1818679, 1182758, 1556900, 341466, 185580, 21199]\\n150504\\tAli Alger (II)\\t8\\t[1262381, 2649045, 925060, 480858, 484505, 533780, 2680553, 150504]\\n164058\\tPercy Lallemang\\t8\\t[2271692, 1559139, 2540816, 1410224, 298846, 2673001, 782246, 164058]\\n167853\\tNicholas Barion (II)\\t8\\t[1262381, 2649045, 925060, 480858, 484505, 533780, 2680553, 167853]\\n170068\\tAsit Sau\\t8\\t[1693672, 2269534, 956429, 1700844, 927616, 17540, 1297836, 170068]\\n191240\\tAnjunette Clare\\t8\\t[103816, 2603827, 569535, 2371286, 180500, 377489, 1917226, 191240]\\n240512\\tJulia Retzlaff (I)\\t8\\t[2271692, 1559139, 2540816, 1410224, 298846, 2673001, 782246, 240512]\\n241391\\tJohan Bichot\\t8\\t[2271692, 1559139, 2526423, 2277214, 651131, 2731576, 2677691, 241391]\\n320222\\tSuhaib Aqrabawi\\t8\\t[1482276, 1904479, 1390342, 199701, 209095, 581753, 2078414, 320222]\\n327969\\tRadi Oliveria\\t8\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 327969]\\n332079\\tMayumi Kusunoki\\t8\\t[1904980, 1155620, 164600, 237732, 1267469, 1202565, 107958, 332079]\\n343377\\tEdna Carvalho\\t8\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 343377]\\n346909\\tReece Parsons\\t8\\t[371218, 1074051, 147170, 1775782, 1847979, 1453074, 2481293, 346909]\\n351739\\tMarc Khanne\\t8\\t[2271692, 1559139, 2526423, 2277214, 651131, 2731576, 2677691, 351739]\\n356846\\tAnna Schellin\\t8\\t[1323924, 1648262, 1818679, 1182758, 1556900, 341466, 185580, 356846]\\n367866\\tPaul Kondakov\\t8\\t[1525932, 2177620, 366823, 431473, 12704, 1517173, 231006, 367866]\\n503078\\tAsimina Outsa\\t8\\t[1529448, 2083509, 1453516, 872713, 1389056, 937876, 1802674, 503078]\\n526180\\tJames Kerr (X)\\t8\\t[1323924, 1648262, 1818679, 1182758, 1556900, 341466, 185580, 526180]\\n565958\\tAlizee Berger\\t8\\t[2271692, 1559139, 2540816, 1410224, 298846, 2673001, 782246, 565958]\\n577348\\tSebastien le Rest\\t8\\t[2271692, 1559139, 2526423, 2277214, 651131, 2731576, 2677691, 577348]\\n587852\\tIgor Zagorodnii\\t8\\t[1525932, 2177620, 366823, 431473, 12704, 1517173, 231006, 587852]\\n593198\\tSydney Wright (II)\\t8\\t[1262381, 2649045, 925060, 480858, 484505, 533780, 2680553, 593198]\\n691424\\tKeith Langford\\t8\\t[2332756, 326327, 1438623, 2048084, 1980544, 1269964, 2048300, 691424]\\n695597\\tKevin Russell (XX)\\t8\\t[2332756, 326327, 1438623, 2048084, 1980544, 1269964, 2048300, 695597]\\n701459\\tHasan Al Khushaim\\t8\\t[2084259, 2184456, 677427, 1376222, 1692343, 786279, 241196, 701459]\\n776437\\tGeorges Lorang\\t8\\t[2271692, 1559139, 2540816, 1410224, 298846, 2673001, 782246, 776437]\\n846343\\tAurelio Rodrigues (II)\\t8\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 846343]\\n927692\\tEuzebio Junior\\t8\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 927692]\\n975875\\tCarrie Dutting (I)\\t8\\t[1262381, 2649045, 925060, 480858, 484505, 533780, 2680553, 975875]\\n986835\\tValeria Savluk\\t8\\t[1525932, 2177620, 366823, 431473, 12704, 1517173, 231006, 986835]\\n998813\\tAla' Obaidat\\t8\\t[1482276, 1904479, 1390342, 199701, 209095, 581753, 864265, 998813]\\n1013483\\tOsama Hajomar\\t8\\t[1482276, 1904479, 1390342, 199701, 209095, 581753, 2078414, 1013483]\\n1025886\\tPavlos Agapakis\\t8\\t[2271692, 1559139, 2540816, 1410224, 298846, 2673001, 782246, 1025886]\\n1027356\\tLisa Pichler\\t8\\t[2271692, 1559139, 2540816, 1410224, 298846, 2673001, 782246, 1027356]\\n1097850\\tKozo Onoe\\t8\\t[630674, 863932, 2009564, 2632524, 922760, 2214110, 958145, 1097850]\\n1125823\\tGerson Llames\\t8\\t[103816, 2603827, 569535, 2371286, 180500, 377489, 1917226, 1125823]\\n1203140\\tMohammad Eliwat\\t8\\t[1482276, 1904479, 1390342, 199701, 209095, 581753, 2078414, 1203140]\\n1206176\\tYana Kudryavtseva\\t8\\t[1525932, 2177620, 366823, 431473, 12704, 1517173, 231006, 1206176]\\n1208581\\tShemise Evans\\t8\\t[371218, 1074051, 147170, 1775782, 1847979, 1453074, 2481293, 1208581]\\n1220177\\tMohammad Saeed\\t8\\t[1482276, 1904479, 1390342, 199701, 209095, 581753, 2078414, 1220177]\\n1262649\\tLevi Waxler (I)\\t8\\t[1262381, 2649045, 925060, 480858, 484505, 533780, 2680553, 1262649]\\n1265314\\tDanielle Becker\\t8\\t[2271692, 1559139, 2540816, 1410224, 298846, 2673001, 782246, 1265314]\\n1300895\\tLorenzo (VI)\\t8\\t[305288, 359876, 1830830, 2154740, 1402476, 428247, 1390566, 1300895]\\n1317404\\tCaroline de Santis\\t8\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 1317404]\\n1330160\\tNasya Kastelik (II)\\t8\\t[1262381, 2649045, 925060, 480858, 484505, 533780, 2680553, 1330160]\\n1349345\\tRuba Obaid\\t8\\t[1482276, 1904479, 1390342, 199701, 209095, 581753, 2078414, 1349345]\\n1352769\\tKaty Miglicco\\t8\\t[1323924, 1648262, 1818679, 1182758, 1556900, 341466, 185580, 1352769]\\n1362025\\tOleg Letko\\t8\\t[1525932, 2177620, 366823, 431473, 12704, 1517173, 231006, 1362025]\\n1381883\\tCameron McBeth (III)\\t8\\t[1323924, 1648262, 1818679, 1182758, 1556900, 341466, 185580, 1381883]\\n1383965\\tLouie Fisher\\t8\\t[1535752, 563940, 1475748, 1777238, 1952821, 1033295, 17128, 1383965]\\n1452052\\tCharlotte Lepelletier (I)\\t8\\t[2271692, 1559139, 2526423, 2277214, 651131, 2731576, 2677691, 1452052]\\n1452937\\tJaime Leal\\t8\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 1452937]\\n1484859\\tAbraham Jeyakumar (II)\\t8\\t[1323924, 1648262, 1818679, 1182758, 1556900, 341466, 185580, 1484859]\\n1559809\\tAlexandra Dimofte\\t8\\t[2084259, 2184456, 677427, 1376222, 1692343, 786279, 241196, 1559809]\\n1578089\\tLouis Riley\\t8\\t[2315078, 1896466, 1197661, 2324537, 1253633, 1839478, 238266, 1578089]\\n1604434\\tOleg Adereiko\\t8\\t[1525932, 2177620, 366823, 431473, 12704, 1517173, 231006, 1604434]\\n1653630\\tJulio do Nascimento\\t8\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 1653630]\\n1673886\\tJimmy Smith (II)\\t8\\t[2332756, 326327, 1438623, 2048084, 1980544, 1269964, 2048300, 1673886]\\n1678217\\tIgor Golovkin\\t8\\t[1525932, 2177620, 366823, 431473, 12704, 1517173, 231006, 1678217]\\n1694870\\tNicholas Baecker\\t8\\t[1535752, 563940, 1475748, 1777238, 1952821, 1033295, 17128, 1694870]\\n1712301\\tGarrett Lewis (II)\\t8\\t[371218, 1074051, 147170, 1775782, 1847979, 1453074, 2481293, 1712301]\\n1776005\\tAicha Abbadi\\t8\\t[2271692, 1559139, 2540816, 1410224, 298846, 2673001, 782246, 1776005]\\n1879372\\tThierry Mersch\\t8\\t[2271692, 1559139, 2540816, 1410224, 298846, 2673001, 782246, 1879372]\\n1895384\\tDebora Regina Camargo\\t8\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 1895384]\\n1899847\\tMagrao\\t8\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 1899847]\\n1902079\\tYazan Al'amm\\t8\\t[1482276, 1904479, 1390342, 199701, 209095, 581753, 864265, 1902079]\\n1916630\\tSilem Santos\\t8\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 1916630]\\n1918413\\tAnthony Bavaro (II)\\t8\\t[1262381, 2649045, 925060, 480858, 484505, 533780, 2680553, 1918413]\\n1923153\\tIsabelle Hofmann\\t8\\t[2271692, 1559139, 2540816, 1410224, 298846, 2673001, 782246, 1923153]\\n1932739\\tCedric Schiltz\\t8\\t[2271692, 1559139, 2540816, 1410224, 298846, 2673001, 782246, 1932739]\\n2011981\\tJake Trevaskis (II)\\t8\\t[2084259, 2184456, 677427, 1376222, 1692343, 786279, 241196, 2011981]\\n2041346\\tVladimir Sverjin\\t8\\t[1525932, 2177620, 366823, 431473, 12704, 1517173, 231006, 2041346]\\n2063672\\tAnna Darmoriz\\t8\\t[1525932, 2177620, 366823, 431473, 12704, 1517173, 231006, 2063672]\\n2118537\\tMarcelo Boldrini\\t8\\t[448934, 8261, 1034516, 2431174, 44518, 2516802, 2687441, 2118537]\\n2136185\\tJamil Nidal\\t8\\t[1482276, 1904479, 1390342, 199701, 209095, 581753, 2078414, 2136185]\\n2166399\\tVicky Reichling\\t8\\t[2271692, 1559139, 2540816, 1410224, 298846, 2673001, 782246, 2166399]\\n2167687\\tThomas Berthol\\t8\\t[2271692, 1559139, 2540816, 1410224, 298846, 2673001, 782246, 2167687]\\n2173682\\tAllen Marsh (VI)\\t8\\t[1323924, 1648262, 1818679, 1182758, 1556900, 341466, 185580, 2173682]\\n2208066\\tMaha Ramadan\\t8\\t[1482276, 1904479, 1390342, 199701, 209095, 581753, 2078414, 2208066]\\n2213785\\tJacson Matos\\t8\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 2213785]\\n2253035\\tMohammad Alsalah\\t8\\t[1482276, 1904479, 1390342, 199701, 209095, 581753, 864265, 2253035]\\n2336149\\tPeter Skold\\t8\\t[1535752, 563940, 1475748, 1777238, 1952821, 1033295, 17128, 2336149]\\n2340831\\tAlvira Reis\\t8\\t[1549860, 1454069, 1979139, 403536, 2347440, 1135769, 858454, 2340831]\\n2438470\\tMike Rotyliano\\t8\\t[75020, 2024772, 547929, 1259575, 944625, 2569838, 2036780, 2438470]\\n2450887\\tIbrahim Abdelfattah\\t8\\t[1482276, 1904479, 1390342, 199701, 209095, 581753, 864265, 2450887]\\n2451368\\tLogan Sork (II)\\t8\\t[1262381, 2649045, 925060, 480858, 484505, 533780, 2680553, 2451368]\",\"totalNumResults\":2413535}",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "order" : 1,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%pgql-pgx",
+          "select v2.id as actor_id, v2.actor, count(e) as bacon_number, array_agg(e.actor_id_1) as connect_pth",
+          "from match shortest (v1) -[e]->{0,6} (v2)",
+          "on bacon_co_actor_full_graph",
+          "where v1.actor = 'Kevin Bacon (I)'",
+          "order by bacon_number desc, v2.id"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : "[{\"raw\":{},\"visualization\":{\"graphAction\":{\"graphName\":\"BACON_SMALL\",\"lastRun\":1630407766660},\"viewTransform\":[[130.1099750105039,27.775532705556955,0.7759564985883151,1182]],\"lastColumns\":[\"ACTOR\"],\"version\":8},\"table\":{\"pageSize\":25,\"lastColumns\":[\"ACTOR_ID\",\"ACTOR\",\"BACON_NUMBER\",\"CONNECT_PTH\"]}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1681820567780,
+          "endTime" : 1681820584512,
+          "interpreter" : "pgql-pgx",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "{\"table\":\"ACTOR_ID\\tACTOR\\tBACON_NUMBER\\tCONNECT_PTH\\n111\\tMuhibbat Abdusalam\\t6\\t[2454808, 1810677, 375215, 800360, 645653, 111]\\n268\\tBence Solymar\\t6\\t[2315532, 151812, 951870, 193972, 1093278, 268]\\n656\\tSama Souhouri\\t6\\t[764132, 2053960, 1276798, 2324537, 1253633, 656]\\n995\\tErik Spiller (I)\\t6\\t[849136, 1427548, 1089190, 83489, 1407358, 995]\\n1846\\tJoohi Akhtar Khan\\t6\\t[1693672, 2269534, 956429, 1700844, 927616, 1846]\\n2077\\tStephane Kervinio\\t6\\t[546292, 1199740, 1881289, 243098, 1047941, 2077]\\n2792\\tRaffaele Ricciardi\\t6\\t[718952, 2094729, 2143923, 1786019, 2642406, 2792]\\n3259\\tAnthony Rigoni\\t6\\t[1011994, 196758, 1763436, 3260, 1065412, 3259]\\n3603\\tKayleigh Coleman\\t6\\t[270312, 236167, 1815388, 296925, 1482231, 3603]\\n4576\\tAlessandra Crispino\\t6\\t[718952, 2094729, 2143923, 1786019, 2642406, 4576]\\n4865\\tSamantha Senn\\t6\\t[2096465, 2081450, 1950622, 2721759, 64818, 4865]\\n5130\\tHelene Sad\\t6\\t[1002904, 1489797, 2420699, 2372315, 1602652, 5130]\\n6093\\tRaquel Bitencourt\\t6\\t[352921, 735164, 219729, 1311162, 89425, 6093]\\n6664\\tSarah Brady (VII)\\t6\\t[2725103, 673137, 561082, 423094, 908543, 6664]\\n7161\\tJohn Saxe Fernandez\\t6\\t[2438310, 614434, 1950656, 2250734, 2208983, 7161]\\n7351\\tGiulio Scarano\\t6\\t[756968, 2631269, 2413496, 150221, 1846760, 7351]\\n7684\\tDavid C. Schmidt\\t6\\t[1538188, 1233486, 132442, 2379225, 2374274, 7684]\\n7770\\tNicolas Ferry\\t6\\t[1577112, 486744, 1983462, 2227478, 1476510, 7770]\\n7955\\tYan Fernandes (II)\\t6\\t[448934, 8261, 1034516, 2431174, 44518, 7955]\\n9640\\tTom Green (I)\\t6\\t[2757267, 213472, 508086, 390977, 1083705, 9640]\\n10027\\tSuzanne Warren (II)\\t6\\t[2364440, 434882, 1198777, 2573184, 341323, 10027]\\n12045\\tPacifico Pieruccioni\\t6\\t[442660, 306736, 1692567, 1454239, 1984621, 12045]\\n12154\\tEvgeniy Pilyaev\\t6\\t[2364440, 2229021, 771736, 1636499, 1264498, 12154]\\n12541\\tGuy Pizzino\\t6\\t[282525, 60023, 2200523, 729358, 2092789, 12541]\\n12542\\tMax Pizzino\\t6\\t[282525, 60023, 2200523, 729358, 2092789, 12542]\\n13181\\tBernard Coupry\\t6\\t[1797844, 843961, 1252405, 1854489, 2720672, 13181]\\n13648\\tJosh Cook (XII)\\t6\\t[1583088, 992978, 1800412, 2371678, 2464371, 13648]\\n13857\\tJames Coppens\\t6\\t[766324, 140314, 2103743, 556848, 354478, 13857]\\n14058\\tDiego Contreras (IV)\\t6\\t[1587328, 874138, 2565048, 1255246, 2464169, 14058]\\n15243\\tLung\\t6\\t[1674684, 1864157, 1238786, 1794553, 2545539, 15243]\\n15515\\tMegan Lyons\\t6\\t[1577112, 279200, 289241, 1349303, 330987, 15515]\\n17051\\tAndrea Chiappetta\\t6\\t[718952, 2094729, 2143923, 1786019, 2642406, 17051]\\n17540\\tSagnik Bose (I)\\t6\\t[1693672, 2269534, 956429, 1700844, 927616, 17540]\\n17988\\tWyatt Booth\\t6\\t[2464064, 71220, 1657819, 1401220, 91290, 17988]\\n19306\\tDavid Kissane\\t6\\t[46148, 970434, 121183, 1464582, 2746971, 19306]\\n19601\\tChristopher O'Brian\\t6\\t[2551820, 2352379, 2102537, 2120676, 399169, 19601]\\n19641\\tPaddy O'Brien (I)\\t6\\t[1231948, 825076, 1244169, 158810, 1945041, 19641]\\n20197\\tElena Neophytou\\t6\\t[36003, 1460939, 2740799, 1810770, 1309029, 20197]\\n21728\\tJames Haggar Jr.\\t6\\t[2757267, 2593012, 2298365, 441381, 2296780, 21728]\\n21729\\tHenry Haggar\\t6\\t[2757267, 2593012, 2298365, 441381, 2296780, 21729]\\n22208\\tZeynep Gunduz\\t6\\t[2586509, 2605605, 1925248, 920743, 591028, 22208]\\n23440\\tMichael Gacnik\\t6\\t[2464064, 71220, 1657819, 1401220, 2698218, 23440]\\n25238\\tFatih Ozdemir\\t6\\t[270312, 13526, 683512, 1261602, 1272680, 25238]\\n26075\\tJessica Windberg\\t6\\t[2640892, 1670315, 259749, 1788361, 682418, 26075]\\n27420\\tPeter Lynch (XIII)\\t6\\t[2595984, 883203, 914371, 2516315, 2044104, 27420]\\n27646\\tMichelle Lopez\\t6\\t[1529448, 2216841, 1876395, 130481, 226736, 27646]\\n29687\\tMuhammad Abujudeh\\t6\\t[1482276, 1904479, 1390342, 199701, 2357877, 29687]\\n30405\\tAlex Bull (III)\\t6\\t[1011994, 196758, 1763436, 3260, 1065412, 30405]\\n31227\\tElin Overgaard\\t6\\t[2332756, 270301, 1093940, 1430681, 1017683, 31227]\\n32382\\tJoanne Tynan\\t6\\t[270312, 498310, 451662, 2752814, 834752, 32382]\\n32642\\tNicolas Valentini (I)\\t6\\t[1675856, 587407, 2723357, 1392482, 821470, 32642]\\n32654\\tFernanda Valenzuela\\t6\\t[2315532, 1840912, 2574584, 2000594, 1410316, 32654]\\n33244\\tAshley Thomas (XI)\\t6\\t[125195, 1027068, 269438, 2197981, 1040066, 33244]\\n34389\\tHeba Hashim\\t6\\t[2624596, 1983094, 689758, 937527, 239904, 34389]\\n36644\\tNikki Richardson (II)\\t6\\t[1535752, 563940, 1475748, 1777238, 2438148, 36644]\\n37451\\tAiora Perez de San Roman\\t6\\t[1587328, 1834317, 2298320, 1528620, 2330338, 37451]\\n39696\\tJohn Paul Woda\\t6\\t[2771780, 2320729, 1702516, 805760, 1407668, 39696]\\n39974\\tJorn Wollebekk\\t6\\t[1693672, 2353108, 60687, 289132, 2490918, 39974]\\n44715\\tBilly Quinn (VI)\\t6\\t[1231948, 825076, 1244169, 158810, 1945041, 44715]\\n45282\\tHarry Ralph\\t6\\t[1529448, 2632412, 1646340, 2343663, 1901573, 45282]\\n45388\\tKurt Ramjan\\t6\\t[608413, 1689139, 1177169, 384739, 941511, 45388]\\n45719\\tAuki Henry\\t6\\t[1535752, 810388, 846763, 2415475, 1183259, 45719]\\n46981\\tBobby Hobgood\\t6\\t[1535752, 1995602, 2617414, 1284118, 814168, 46981]\\n50032\\tUtku Palamutcu\\t6\\t[1583088, 898960, 2170298, 2272131, 717771, 50032]\\n50392\\tShubharun Chatterjee\\t6\\t[1693672, 2269534, 956429, 721856, 818571, 50392]\\n51763\\tAl Peck (II)\\t6\\t[801973, 1076259, 1839616, 2239175, 2655097, 51763]\\n52878\\tMyung-ha Lee (II)\\t6\\t[970356, 1240473, 715977, 315338, 2117073, 52878]\\n56153\\tTara Tinker (II)\\t6\\t[391731, 1836082, 220097, 1648909, 1114714, 56153]\\n57114\\tDavid Oeo\\t6\\t[1519253, 2268423, 1616987, 554031, 2111476, 57114]\\n58268\\tFranco Pucci (III)\\t6\\t[2511997, 1212604, 1646631, 2656692, 1537293, 58268]\\n58939\\tMarley Clifton\\t6\\t[776696, 1192549, 844024, 2360102, 1015436, 58939]\\n59343\\tElijah Clements\\t6\\t[681676, 2075883, 356114, 220928, 805588, 59343]\\n59660\\tFrankie Evers\\t6\\t[1231948, 825076, 1244169, 158810, 1983994, 59660]\\n59828\\tNikolay Evtushenko (IV)\\t6\\t[756968, 2608523, 477256, 234668, 2432969, 59828]\\n60694\\tMarko Skoric (I)\\t6\\t[1312544, 2669646, 1179482, 2789440, 2777806, 60694]\\n61239\\tShaun (IX)\\t6\\t[1535752, 1704434, 2190430, 1597162, 2771622, 61239]\\n61392\\tJohn Joe Sheehan\\t6\\t[1231948, 825076, 1244169, 158810, 1945041, 61392]\\n61660\\tJulie Cupillard\\t6\\t[879876, 1299030, 1009469, 1108964, 2323548, 61660]\\n61864\\tMagali Cusatis\\t6\\t[17589, 1729036, 1997675, 2055647, 2584181, 61864]\\n62615\\tEzza Clark\\t6\\t[2624596, 1983094, 689758, 937527, 239904, 62615]\\n63014\\tAnna Albinsson\\t6\\t[1693672, 1211466, 1166771, 1698252, 1083548, 63014]\\n63846\\tQingxiang Zhang\\t6\\t[2457680, 2531925, 2497496, 938034, 605004, 63846]\\n63927\\tShinichi Nakahama\\t6\\t[1597920, 864306, 1170688, 2635788, 33313, 63927]\\n65568\\tRachael Reid\\t6\\t[879876, 2283712, 1639654, 1002321, 1881088, 65568]\\n65770\\tRika (VI)\\t6\\t[2024466, 2184355, 982469, 824669, 1153265, 65770]\\n67450\\tLouise Mommey\\t6\\t[2603840, 362624, 1391541, 1476204, 96305, 67450]\\n67594\\tKeah Moffett\\t6\\t[1538188, 1836674, 814874, 2478614, 2496099, 67594]\\n68281\\tJuri Morozuki\\t6\\t[1573077, 1568878, 1086421, 265685, 941600, 68281]\\n68541\\tOrin R. Woodbury\\t6\\t[1445781, 2359170, 1094790, 261993, 293243, 68541]\\n69007\\tYunqing Xie\\t6\\t[2726199, 1075108, 2034546, 190927, 1426420, 69007]\\n69784\\tPurshottam Vaidya\\t6\\t[155136, 1877, 1625707, 165618, 625236, 69784]\\n70275\\tMarco van Hees (II)\\t6\\t[1583088, 1675468, 1139338, 265344, 253102, 70275]\\n70576\\tJohanna Vargas\\t6\\t[585908, 494659, 2779505, 2549830, 320352, 70576]\\n71300\\tReginald Minahan\\t6\\t[1535752, 1224428, 1601709, 386431, 1133737, 71300]\\n71460\\tYida Miranda\\t6\\t[766324, 1753851, 965909, 337156, 1947657, 71460]\\n71802\\tVadim Mitin\\t6\\t[1525932, 2177620, 366823, 431473, 463033, 71802]\\n72648\\tEthan Wagner\\t6\\t[1329916, 805098, 2250877, 799535, 2657571, 72648]\\n72774\\tTom Wallace (V)\\t6\\t[282525, 60023, 2200523, 729358, 2092789, 72774]\\n73226\\tStefano Marietti (II)\\t6\\t[1693672, 2084913, 2354512, 2704229, 1128141, 73226]\\n73255\\tHayes Markham\\t6\\t[846600, 595462, 2732530, 1584061, 541343, 73255]\",\"totalNumResults\":2413031}",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "order" : 2,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%pgql-pgx",
+          "select v2.id as actor_id, v2.actor, count(e) as bacon_number, array_agg(e.actor_id_1) as connect_pth",
+          "from match shortest (v1) -[e]->* (v2)",
+          "on bacon_co_actor_full_graph",
+          "where v1.actor = 'Kevin Bacon (I)'",
+          "and v2.actor = 'Michael J. Fox (I)'"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1681805678413,
+          "endTime" : 1681805684245,
+          "interpreter" : "pgql-pgx",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "{\"table\":\"ACTOR_ID\\tACTOR\\tBACON_NUMBER\\tCONNECT_PTH\\n620790\\tMichael J. Fox (I)\\t2\\t[83137, 620790]\",\"totalNumResults\":1}",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "order" : 3,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%pgql-pgx",
+          "select v1.id as id1, v1.actor as actor1, count(e) as bacon_number, array_agg(hop.actor) as connect_path, v2.id as id2, v2.actor as actor2",
+          "from match shortest (v1) (-[e]-> (hop))* (v2)",
+          "on bacon_co_actor_full_graph",
+          "where v1.actor = 'Kevin Bacon (I)'",
+          "and v2.actor = 'Michael J. Fox (I)'"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1681819915145,
+          "endTime" : 1681819921964,
+          "interpreter" : "pgql-pgx",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "{\"table\":\"ID1\\tACTOR1\\tBACON_NUMBER\\tCONNECT_PATH\\tID2\\tACTOR2\\n292067\\tKevin Bacon (I)\\t2\\t[John Candy, Michael J. Fox (I)]\\t620790\\tMichael J. Fox (I)\",\"totalNumResults\":1}",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "order" : 4,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%pgql-pgx",
+          "select v1.id as id1, v1.actor as actor1, count(e) as bacon_number, array_agg(hop.id) as connect_path_id, array_agg(hop.actor) as connect_path, v2.id as id2, v2.actor as actor2",
+          "from match all shortest (v1) (-[e]-> (hop))* (v2)",
+          "on bacon_co_actor_full_graph",
+          "where v1.actor = 'Kevin Bacon (I)'",
+          "and v2.actor = 'Michael J. Fox (I)'"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : {
+          "startTime" : 1681806170226,
+          "endTime" : 1681806482482,
+          "interpreter" : "pgql-pgx",
+          "taskStatus" : "CANCELLED",
+          "status" : "KEEP_PREVIOUS_RESULT",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "order" : 5,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%pgql-pgx",
+          "select v1.id as id1, v1.actor as actor1, count(e) as bacon_number, array_agg(hop.actor) as connect_path, v2.id as id2, v2.actor as actor2",
+          "from match shortest (v1) (-[e]-> (hop))* (v2)",
+          "on bacon_co_actor_full_graph",
+          "where v1.actor = 'Kevin Bacon (I)'",
+          "and v2.actor = 'Elzbieta Jasinska'"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "startTime" : 1681808075800,
+          "endTime" : 1681808081710,
+          "interpreter" : "pgql-pgx",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "{\"table\":\"ID1\\tACTOR1\\tBACON_NUMBER\\tCONNECT_PATH\\tID2\\tACTOR2\\n292067\\tKevin Bacon (I)\\t2\\t[Julie Delpy, Elzbieta Jasinska]\\t568231\\tElzbieta Jasinska\",\"totalNumResults\":1}",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      }
+    ]
+  }
+]

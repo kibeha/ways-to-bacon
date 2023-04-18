@@ -1,20 +1,21 @@
 /*
 Assume normalized tables have been created and loaded
 
-Modified BFS PL/SQL solution by kibeha to query co_actors_* tables instead of PL/SQL collection
+Modification of the modified BFS PL/SQL solution by kibeha - modified to reduce PGA by piping output and cleaning collection
+
+This version *without* the connect_path to save even more memory
 */
 
 /*
 Types for table function
 */
 
-create or replace type shortest_path as object (
+create or replace type shortest_path_3b as object (
    actor_id       number
  , bacon#         number
- , connect_path   clob
 )
 /
-create or replace type shortest_paths as table of shortest_path
+create or replace type shortest_paths_3b as table of shortest_path_3b
 /
 
 
@@ -22,23 +23,23 @@ create or replace type shortest_paths as table of shortest_path
 PL/SQL Breadth-First on small file
 */
 
-create or replace function bacon2_small(
+create or replace function bacon3b_small(
    start_actor    actors_small.id%type
 )
-   return shortest_paths
+   return shortest_paths_3b pipelined
 as
   type   found_type is table of boolean   index by pls_integer;
   found  found_type ;
-  result shortest_paths := shortest_paths();
+  result shortest_paths_3b := shortest_paths_3b();
   seq    pls_integer;
 begin
   result.extend;
-  result(1) := shortest_path(start_actor, 0, to_clob(start_actor));
+  result(1) := shortest_path_3b(start_actor, 0);
   found(start_actor) := null;
   seq := 1;
   
   while result.exists(seq) loop
-    exit when result(seq).bacon# >= 6;   -- "Six Degrees of Kevin Bacon"
+    exit when result(seq).bacon# > 6;   -- "Six Degrees of Kevin Bacon"
     for neighbor in (
       select
          ca.actor_id_2
@@ -47,51 +48,51 @@ begin
     ) loop
       if not found.exists(neighbor.actor_id_2) then
         result.extend;
-        result(result.last) := shortest_path(neighbor.actor_id_2, result(seq).bacon# + 1, result(seq).connect_path || '->' || neighbor.actor_id_2);
+        result(result.last) := shortest_path_3b(neighbor.actor_id_2, result(seq).bacon# + 1);
         found(neighbor.actor_id_2) := null;
       end if;
     end loop;
+    pipe row (result(seq));
+    result.delete(seq);
     seq := seq + 1;
   end loop;
-  return result;
-end bacon2_small;
+end bacon3b_small;
 /
 
 select
    bs.actor_id
  , a2.actor
  , bs.bacon#
- , bs.connect_path
 from actors_small a1
-cross apply bacon2_small(a1.id) bs
+cross apply bacon3b_small(a1.id) bs
 join actors_small a2
    on a2.id = bs.actor_id
 where a1.actor = 'Kevin Bacon (I)'
 order by bs.bacon# desc, bs.actor_id;
 
--- 161 rows average 0.15 seconds
+-- 161 rows average 0.1 seconds
 
 /*
 PL/SQL Breadth-First on top250 file
 */
 
-create or replace function bacon2_top250(
+create or replace function bacon3b_top250(
    start_actor    actors_top250.id%type
 )
-   return shortest_paths
+   return shortest_paths_3b pipelined
 as
   type   found_type is table of boolean   index by pls_integer;
   found  found_type ;
-  result shortest_paths := shortest_paths();
+  result shortest_paths_3b := shortest_paths_3b();
   seq    pls_integer;
 begin
   result.extend;
-  result(1) := shortest_path(start_actor, 0, to_clob(start_actor));
+  result(1) := shortest_path_3b(start_actor, 0);
   found(start_actor) := null;
   seq := 1;
   
   while result.exists(seq) loop
-    exit when result(seq).bacon# >= 6;   -- "Six Degrees of Kevin Bacon"
+    exit when result(seq).bacon# > 6;   -- "Six Degrees of Kevin Bacon"
     for neighbor in (
       select
          ca.actor_id_2
@@ -100,23 +101,23 @@ begin
     ) loop
       if not found.exists(neighbor.actor_id_2) then
         result.extend;
-        result(result.last) := shortest_path(neighbor.actor_id_2, result(seq).bacon# + 1, result(seq).connect_path || '->' || neighbor.actor_id_2);
+        result(result.last) := shortest_path_3b(neighbor.actor_id_2, result(seq).bacon# + 1);
         found(neighbor.actor_id_2) := null;
       end if;
     end loop;
+    pipe row (result(seq));
+    result.delete(seq);
     seq := seq + 1;
   end loop;
-  return result;
-end bacon2_top250;
+end bacon3b_top250;
 /
 
 select
    bs.actor_id
  , a2.actor
  , bs.bacon#
- , bs.connect_path
 from actors_top250 a1
-cross apply bacon2_top250(a1.id) bs
+cross apply bacon3b_top250(a1.id) bs
 join actors_top250 a2
    on a2.id = bs.actor_id
 where a1.actor = 'Kevin Bacon (I)'
@@ -129,23 +130,23 @@ order by bs.bacon# desc, bs.actor_id;
 PL/SQL Breadth-First on full file
 */
 
-create or replace function bacon2_full(
+create or replace function bacon3b_full(
    start_actor    actors_full.id%type
 )
-   return shortest_paths
+   return shortest_paths_3b pipelined
 as
   type   found_type is table of boolean   index by pls_integer;
   found  found_type ;
-  result shortest_paths := shortest_paths();
+  result shortest_paths_3b := shortest_paths_3b();
   seq    pls_integer;
 begin
   result.extend;
-  result(1) := shortest_path(start_actor, 0, to_clob(start_actor));
+  result(1) := shortest_path_3b(start_actor, 0);
   found(start_actor) := null;
   seq := 1;
   
   while result.exists(seq) loop
-    exit when result(seq).bacon# >= 6;   -- "Six Degrees of Kevin Bacon"
+    exit when result(seq).bacon# > 6;   -- "Six Degrees of Kevin Bacon"
     for neighbor in (
       select
          ca.actor_id_2
@@ -154,26 +155,27 @@ begin
     ) loop
       if not found.exists(neighbor.actor_id_2) then
         result.extend;
-        result(result.last) := shortest_path(neighbor.actor_id_2, result(seq).bacon# + 1, result(seq).connect_path || '->' || neighbor.actor_id_2);
+        result(result.last) := shortest_path_3b(neighbor.actor_id_2, result(seq).bacon# + 1);
         found(neighbor.actor_id_2) := null;
       end if;
     end loop;
+    pipe row (result(seq));
+    result.delete(seq);
     seq := seq + 1;
   end loop;
-  return result;
-end bacon2_full;
+end bacon3b_full;
 /
 
 select
    bs.actor_id
  , a2.actor
  , bs.bacon#
- , bs.connect_path
 from actors_full a1
-cross apply bacon2_full(a1.id) bs
+cross apply bacon3b_full(a1.id) bs
 join actors_full a2
    on a2.id = bs.actor_id
 where a1.actor = 'Kevin Bacon (I)'
 order by bs.bacon# desc, bs.actor_id;
 
--- ORA-04036: PGA memory used by the instance exceeds PGA_AGGREGATE_LIMIT
+-- 2413031 rows 
+

@@ -1,30 +1,27 @@
 %pgql-pgx
 select v2.id as actor_id, v2.actor, count(e) as bacon_number, array_agg(e.actor_id_1) as connect_pth
 from match shortest (v1) -[e]->* (v2)
-on graph_bacon_small
+on bacon_co_actor_small_graph
 where v1.actor = 'Kevin Bacon (I)'
 order by bacon_number desc, v2.id
-
 
 %pgql-pgx
 select v2.id as actor_id, v2.actor, count(e) as bacon_number, array_agg(e.actor_id_1) as connect_pth
 from match shortest (v1) -[e]->* (v2)
-on graph_bacon_small
+on bacon_co_actor_small_graph
 where v1.actor = 'Kevin Bacon (I)'
 and v2.actor = 'Al Pacino'
-
 
 %pgql-pgx
 select v1.id as id1, v1.actor as actor1, count(e) as bacon_number, array_agg(hop.actor) as connect_path, v2.id as id2, v2.actor as actor2
 from match shortest (v1) (-[e]-> (hop))* (v2)
-on graph_bacon_small
+on bacon_co_actor_small_graph
 where v1.actor = 'Kevin Bacon (I)'
 and v2.actor = 'Al Pacino'
-
 
 %pgql-pgx
 select v1.id as id1, v1.actor as actor1, count(e) as bacon_number, array_agg(hop.id) as connect_path_id, array_agg(hop.actor) as connect_path, v2.id as id2, v2.actor as actor2
 from match all shortest (v1) (-[e]-> (hop))* (v2)
-on graph_bacon_small
+on bacon_co_actor_small_graph
 where v1.actor = 'Kevin Bacon (I)'
 and v2.actor = 'Al Pacino'

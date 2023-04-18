@@ -11,6 +11,7 @@ Query like this will calculate bacon#/path for ALL actors,
 and THEN filter on Al Pacino
 */
 
+
 select
    bs.actor_id
  , a2.actor
@@ -68,7 +69,8 @@ as
     loop
        pos2 := instr(path_in || '->', '->', pos1);
        exit when pos2 = 0 or pos2 is null;
-       reversed := substr(path_in, pos1, pos2 - pos1) || nvl2(reversed, '->', '') || reversed;
+--       reversed := substr(path_in, pos1, pos2 - pos1) || nvl2(reversed, '->', '') || reversed; -- NVL2 works in PL/SQL in 21c - in 19c need to use CASE
+       reversed := substr(path_in, pos1, pos2 - pos1) || case when reversed is not null then '->' end || reversed;
        pos1 := pos2 + 2;
     end loop;
     return reversed;
@@ -187,7 +189,8 @@ as
     loop
        pos2 := instr(path_in || '->', '->', pos1);
        exit when pos2 = 0 or pos2 is null;
-       reversed := substr(path_in, pos1, pos2 - pos1) || nvl2(reversed, '->', '') || reversed;
+--       reversed := substr(path_in, pos1, pos2 - pos1) || nvl2(reversed, '->', '') || reversed; -- NVL2 works in PL/SQL in 21c - in 19c need to use CASE
+       reversed := substr(path_in, pos1, pos2 - pos1) || case when reversed is not null then '->' end || reversed;
        pos1 := pos2 + 2;
     end loop;
     return reversed;
@@ -271,9 +274,9 @@ from actors_top250 a1
 cross join actors_top250 a2
 cross apply bacon4_top250(a1.id, a2.id) bs
 where a1.actor = 'Kevin Bacon (I)'
-and a2.actor = 'Al Pacino';
+and a2.actor = 'Michael J. Fox (I)';
 
--- 1 row average 0.1 seconds
+-- 1 row average 0.05 seconds
 
 select
    bs.actor_id
@@ -286,7 +289,7 @@ cross apply bacon4_top250(a1.id, a2.id) bs
 where a1.actor = 'Kevin Bacon (I)'
 and a2.actor = 'Elzbieta Jasinska';
 
--- 1 row average 0.5 seconds
+-- 1 row average 0.075 seconds
 
 
 /*
@@ -319,7 +322,8 @@ as
     loop
        pos2 := instr(path_in || '->', '->', pos1);
        exit when pos2 = 0 or pos2 is null;
-       reversed := substr(path_in, pos1, pos2 - pos1) || nvl2(reversed, '->', '') || reversed;
+--       reversed := substr(path_in, pos1, pos2 - pos1) || nvl2(reversed, '->', '') || reversed; -- NVL2 works in PL/SQL in 21c - in 19c need to use CASE
+       reversed := substr(path_in, pos1, pos2 - pos1) || case when reversed is not null then '->' end || reversed;
        pos1 := pos2 + 2;
     end loop;
     return reversed;
@@ -403,22 +407,10 @@ from actors_full a1
 cross join actors_full a2
 cross apply bacon4_full(a1.id, a2.id) bs
 where a1.actor = 'Kevin Bacon (I)'
-and a2.actor = 'Al Pacino (I)';
+and a2.actor = 'Michael J. Fox (I)';
 
--- Bacon# 1 average 0.05 seconds
+-- Bacon# 2 average 0.075 seconds
 
-select a1.*,
-   bs.actor_id
- , a2.actor
- , bs.bacon#
- , bs.connect_path
-from actors_full a1
-cross join actors_full a2
-cross apply bacon4_full(a1.id, a2.id) bs
-where a1.actor = 'Kevin Bacon (I)'
-and a2.actor = 'Benoit Regent';
-
--- Bacon# 2 - average 1 second
 
 select a1.*,
    bs.actor_id
@@ -431,7 +423,8 @@ cross apply bacon4_full(a1.id, a2.id) bs
 where a1.actor = 'Kevin Bacon (I)'
 and a2.actor = 'Brigitte Helm';
 
--- Bacon# 3 - average 2 seconds
+-- Bacon# 3 - average 0.2 seconds
+
 
 select a1.*,
    bs.actor_id
@@ -444,5 +437,19 @@ cross apply bacon4_full(a1.id, a2.id) bs
 where a1.actor = 'Kevin Bacon (I)'
 and a2.actor = 'Eliane Tayar';
 
--- Should have given Bacon# 4
--- ORA-04036: PGA memory used by the instance exceeds PGA_AGGREGATE_LIMIT
+-- Also Bacon# 3 - average 6 seconds
+
+
+select a1.*,
+   bs.actor_id
+ , a2.actor
+ , bs.bacon#
+ , bs.connect_path
+from actors_full a1
+cross join actors_full a2
+cross apply bacon4_full(a1.id, a2.id) bs
+where a1.actor = 'Kevin Bacon (I)'
+and a2.actor = 'Muhibbat Abdusalam';
+
+-- Bacon# 6 - average 12 seconds
+

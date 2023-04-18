@@ -1,0 +1,226 @@
+[
+  {
+    "name" : "Bacon/bacon_top250",
+    "description" : null,
+    "tags" : null,
+    "version" : "6",
+    "layout" : "zeppelin",
+    "type" : "Default",
+    "readOnly" : false,
+    "snapshot" : false,
+    "template" : "dsrgmn3y",
+    "templateConfig" : "{\"visualization\":{\"filters\":[{\"_id\":1583324064459,\"type\":\"styling\",\"enabled\":true,\"conditions\":{\"operator\":\"and\",\"conditions\":[{\"property\":\"hiddenConnection\",\"operator\":\"*\",\"value\":\"\"}]},\"component\":\"edge\",\"target\":\"edge\",\"properties\":{\"colors\":[\"rgba(0, 0, 0, 0.1)\"],\"style\":[\"dashed\"],\"legendTitle\":[\"Hidden Connection\"]}},{\"_id\":1590499315755,\"type\":\"aggregation\",\"enabled\":true,\"conditions\":{\"operator\":\"and\",\"conditions\":[]},\"component\":\"vertex\",\"target\":\"vertex\",\"properties\":{},\"aggregation\":[{\"source\":\"\",\"type\":\"average\"}]}],\"version\":4}}",
+    "paragraphs" : [
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "order" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%pgql-pgx",
+          "select v2.id as actor_id, v2.actor, count(e) as bacon_number, array_agg(e.actor_id_1) as connect_pth",
+          "from match shortest (v1) -[e]->* (v2)",
+          "on bacon_co_actor_top250_graph",
+          "where v1.actor = 'Kevin Bacon (I)'",
+          "order by bacon_number desc, v2.id"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : "[{\"raw\":{},\"visualization\":{\"graphAction\":{\"graphName\":\"BACON_SMALL\",\"lastRun\":1630407766660},\"viewTransform\":[[130.1099750105039,27.775532705556955,0.7759564985883151,1182]],\"lastColumns\":[\"ACTOR\"],\"version\":8},\"table\":{\"pageSize\":25,\"lastColumns\":[\"ACTOR_ID\",\"ACTOR\",\"BACON_NUMBER\",\"CONNECT_PTH\"]}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1681805192658,
+          "endTime" : 1681805194163,
+          "interpreter" : "pgql-pgx",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "{\"table\":\"ACTOR_ID\\tACTOR\\tBACON_NUMBER\\tCONNECT_PTH\\n16\\tTakao Zushi\\t6\\t[7978, 4929, 7864, 9436, 7811, 16]\\n490\\tHanns Leo Reich\\t6\\t[7978, 4929, 8153, 3162, 4740, 490]\\n491\\tArthur Reinhardt\\t6\\t[7978, 4929, 8153, 3162, 4740, 491]\\n1333\\tJean Schlegel\\t6\\t[3820, 1704, 11013, 8368, 3717, 1333]\\n1334\\tAnne Theurillat\\t6\\t[3820, 1704, 11013, 8368, 3717, 1334]\\n1595\\tRyujiro Oki\\t6\\t[7978, 4929, 7864, 9436, 7811, 1595]\\n1596\\tHanbei Kawai\\t6\\t[7978, 4929, 7864, 9436, 7811, 1596]\\n1597\\tHitoshi Ueki\\t6\\t[7978, 4929, 7864, 9436, 7811, 1597]\\n1598\\tMasaaki Sasaki\\t6\\t[7978, 4929, 7864, 9436, 7811, 1598]\\n1599\\tKazuo Kato (II)\\t6\\t[7978, 4929, 7864, 9436, 7811, 1599]\\n1600\\tYoshimitsu Yamaguchi\\t6\\t[7978, 4929, 7864, 9436, 7811, 1600]\\n2076\\tAnny Hintze\\t6\\t[7978, 4929, 8153, 3162, 4740, 2076]\\n2077\\tRolf von Goth\\t6\\t[7978, 4929, 8153, 3162, 4740, 2077]\\n2078\\tHilde Woitscheff\\t6\\t[7978, 4929, 8153, 3162, 4740, 2078]\\n2079\\tHelen von Munchofen\\t6\\t[7978, 4929, 8153, 3162, 4740, 2079]\\n2926\\tTeco Celio\\t6\\t[3820, 1704, 11013, 8368, 3717, 2926]\\n2927\\tNader Farman\\t6\\t[3820, 1704, 11013, 8368, 3717, 2927]\\n2928\\tNeige Dolsky\\t6\\t[3820, 1704, 11013, 8368, 3717, 2928]\\n2929\\tBenoit Regent\\t6\\t[3820, 1704, 11013, 8368, 3717, 2929]\\n2930\\tCecile Tanner\\t6\\t[3820, 1704, 11013, 8368, 3717, 2930]\\n2931\\tElzbieta Jasinska\\t6\\t[3820, 1704, 11013, 8368, 3717, 2931]\\n3172\\tSakae Kimura\\t6\\t[7978, 4929, 7864, 9436, 7811, 3172]\\n3173\\tHisashi Igawa\\t6\\t[7978, 4929, 7864, 9436, 7811, 3173]\\n3643\\tOlly Boeheim\\t6\\t[7978, 4929, 8153, 3162, 4740, 3643]\\n3644\\tBrigitte Helm\\t6\\t[7978, 4929, 8153, 3162, 3164, 3644]\\n3645\\tFritz Alberti\\t6\\t[7978, 4929, 8153, 3162, 4740, 3645]\\n3646\\tBeatrice Garga\\t6\\t[7978, 4929, 8153, 3162, 4740, 3646]\\n3647\\tMargarete Lanner\\t6\\t[7978, 4929, 8153, 3162, 4740, 3647]\\n4536\\tJessica Korinek\\t6\\t[3820, 1704, 11013, 8368, 3717, 4536]\\n4746\\tReiko Nanjo\\t6\\t[7978, 4929, 7864, 9436, 7811, 4746]\\n4747\\tTokie Kanda\\t6\\t[7978, 4929, 7864, 9436, 7811, 4747]\\n4748\\tMansai Nomura\\t6\\t[7978, 4929, 7864, 9436, 7811, 4748]\\n4749\\tYoshitaka Zushi\\t6\\t[7978, 4929, 7864, 9436, 7811, 4749]\\n5221\\tHeinrich George\\t6\\t[7978, 4929, 8153, 3162, 4740, 5221]\\n6079\\tBernard Escalon\\t6\\t[3820, 1704, 11013, 8368, 3717, 6079]\\n6319\\tPita\\t6\\t[7978, 4929, 7864, 9436, 7811, 6319]\\n6320\\tDaisuke Ryu\\t6\\t[7978, 4929, 7864, 9436, 7811, 6320]\\n6321\\tMieko Harada\\t6\\t[7978, 4929, 7864, 9436, 7811, 6321]\\n6322\\tSawako Kochi\\t6\\t[7978, 4929, 7864, 9436, 7811, 6322]\\n6323\\tYoshiko Miyazaki\\t6\\t[7978, 4929, 7864, 9436, 7811, 6323]\\n6764\\tFritz Rasp\\t6\\t[7978, 4929, 8153, 3162, 4740, 6764]\\n6765\\tWalter Kuehle\\t6\\t[7978, 4929, 8153, 3162, 4740, 6765]\\n6766\\tEllen Frey (I)\\t6\\t[7978, 4929, 8153, 3162, 4740, 6766]\\n6767\\tGustav Frohlich\\t6\\t[7978, 4929, 8153, 3162, 4740, 6767]\\n7581\\tLeo Ramseyer\\t6\\t[3820, 1704, 11013, 8368, 3717, 7581]\\n7582\\tBrigitte Raul\\t6\\t[3820, 1704, 11013, 8368, 3717, 7582]\\n7583\\tMarc Autheman\\t6\\t[3820, 1704, 11013, 8368, 3717, 7583]\\n7584\\tSamuel Le Bihan\\t6\\t[3820, 1704, 11013, 8368, 3717, 7584]\\n7585\\tJuliette Binoche\\t6\\t[3820, 1704, 11013, 8368, 3717, 7585]\\n7586\\tPaul Vermeulen (I)\\t6\\t[3820, 1704, 11013, 8368, 3717, 7586]\\n7808\\tHaruko Togo\\t6\\t[7978, 4929, 7864, 9436, 7811, 7808]\\n7809\\tMasaru Sakurai\\t6\\t[7978, 4929, 7864, 9436, 7811, 7809]\\n7810\\tSusumu Terajima\\t6\\t[7978, 4929, 7864, 9436, 7811, 7810]\\n7812\\tKenji Kodama (I)\\t6\\t[7978, 4929, 7864, 9436, 7811, 7812]\\n7813\\tHeihachiro Suzuki\\t6\\t[7978, 4929, 7864, 9436, 7811, 7813]\\n7814\\tTetsuo Yamashita (I)\\t6\\t[7978, 4929, 7864, 9436, 7811, 7814]\\n8288\\tOlaf Storm\\t6\\t[7978, 4929, 8153, 3162, 4740, 8288]\\n8289\\tGrete Berger\\t6\\t[7978, 4929, 8153, 3162, 4740, 8289]\\n8290\\tErwin Biswanger\\t6\\t[7978, 4929, 8153, 3162, 4740, 8290]\\n9144\\tIrene Jacob\\t6\\t[3820, 1704, 11013, 8368, 3717, 9144]\\n9145\\tJulie Delpy\\t6\\t[3820, 1704, 11013, 8368, 3717, 9145]\\n9146\\tRoland Carey\\t6\\t[3820, 1704, 11013, 8368, 3717, 9146]\\n9147\\tMarion Stalens\\t6\\t[3820, 1704, 11013, 8368, 3717, 9147]\\n9148\\tJean-Pierre Lorit\\t6\\t[3820, 1704, 11013, 8368, 3717, 9148]\\n9386\\tJun Tazaki\\t6\\t[7978, 4929, 7864, 9436, 7811, 9386]\\n9387\\tAkira Terao\\t6\\t[7978, 4929, 7864, 9436, 7811, 9387]\\n9388\\tMasuo Amada\\t6\\t[7978, 4929, 7864, 9436, 7811, 9388]\\n9389\\tKumeko Otowa\\t6\\t[7978, 4929, 7864, 9436, 7811, 9389]\\n9390\\tAkihiko Sugizaki\\t6\\t[7978, 4929, 7864, 9436, 7811, 9390]\\n9391\\tTakashi Watanabe (V)\\t6\\t[7978, 4929, 7864, 9436, 7811, 9391]\\n9832\\tErwin Vater\\t6\\t[7978, 4929, 8153, 3162, 4740, 9832]\\n9833\\tCurt Siodmak\\t6\\t[7978, 4929, 8153, 3162, 4740, 9833]\\n9834\\tHelene Weigel\\t6\\t[7978, 4929, 8153, 3162, 4740, 9834]\\n9835\\tDolly Grey (I)\\t6\\t[7978, 4929, 8153, 3162, 4740, 9835]\\n9836\\tRudolf Klein-Rogge\\t6\\t[7978, 4929, 8153, 3162, 4740, 9836]\\n10660\\tJean-Louis Trintignant\\t6\\t[3820, 1704, 11013, 8368, 3717, 10660]\\n10903\\tSeizo Kato\\t6\\t[7978, 4929, 7864, 9436, 7811, 10903]\\n10904\\tToshiya Ito\\t6\\t[7978, 4929, 7864, 9436, 7811, 10904]\\n10905\\tYuichi Hibi\\t6\\t[7978, 4929, 7864, 9436, 7811, 10905]\\n10906\\tNorio Matsui\\t6\\t[7978, 4929, 7864, 9436, 4750, 10906]\\n10907\\tRyo Nagasawa\\t6\\t[7978, 4929, 7864, 9436, 7811, 10907]\\n10908\\tJinpachi Nezu\\t6\\t[7978, 4929, 7864, 9436, 7811, 10908]\\n10909\\tMasayuki Yui (I)\\t6\\t[7978, 4929, 7864, 9436, 7811, 10909]\\n11395\\tMax Dietze\\t6\\t[7978, 4929, 8153, 3162, 4740, 11395]\\n11396\\tAlfred Abel\\t6\\t[7978, 4929, 8153, 3162, 4740, 11396]\\n11397\\tHenrietta Siodmak\\t6\\t[7978, 4929, 8153, 3162, 4740, 11397]\\n12263\\tFrederique Feder\\t6\\t[3820, 1704, 11013, 8368, 3717, 12263]\\n12264\\tJean-Marie Daunas\\t6\\t[3820, 1704, 11013, 8368, 3717, 12264]\\n1\\tElse Ehser\\t5\\t[7978, 4929, 8153, 3162, 1]\\n2\\tTrude Moos\\t5\\t[7978, 4929, 8153, 3162, 2]\\n3\\tEdgar Pauly\\t5\\t[7978, 4929, 8153, 3162, 3]\\n4\\tKarl Platen\\t5\\t[7978, 4929, 8153, 3162, 4]\\n5\\tMaya Norden\\t5\\t[7978, 4929, 8153, 3162, 5]\\n6\\tJ.A. Eckhoff\\t5\\t[7978, 4929, 8153, 3162, 6]\\n7\\tEllen Widmann\\t5\\t[7978, 4929, 8153, 3162, 7]\\n8\\tMax Sablotzki\\t5\\t[7978, 4929, 8153, 3162, 8]\\n9\\tAlfred Loretto\\t5\\t[7978, 4929, 8153, 3162, 9]\\n10\\tHeinrich Gretler\\t5\\t[7978, 4929, 8153, 3162, 10]\\n11\\tHadrian Maria Netto\\t5\\t[7978, 4929, 8153, 3162, 11]\\n213\\tElsie Codd\\t5\\t[7978, 11088, 11557, 4957, 213]\",\"totalNumResults\":11803}",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "order" : 1,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%pgql-pgx",
+          "select v2.id as actor_id, v2.actor, count(e) as bacon_number, array_agg(e.actor_id_1) as connect_pth",
+          "from match shortest (v1) -[e]->* (v2)",
+          "on bacon_co_actor_top250_graph",
+          "where v1.actor = 'Kevin Bacon (I)'",
+          "and v2.actor = 'Michael J. Fox (I)'"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1681805236694,
+          "endTime" : 1681805238040,
+          "interpreter" : "pgql-pgx",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "{\"table\":\"ACTOR_ID\\tACTOR\\tBACON_NUMBER\\tCONNECT_PTH\\n2671\\tMichael J. Fox (I)\\t4\\t[11402, 5135, 3523, 2671]\",\"totalNumResults\":1}",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "order" : 2,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%pgql-pgx",
+          "select v1.id as id1, v1.actor as actor1, count(e) as bacon_number, array_agg(hop.actor) as connect_path, v2.id as id2, v2.actor as actor2",
+          "from match shortest (v1) (-[e]-> (hop))* (v2)",
+          "on bacon_co_actor_top250_graph",
+          "where v1.actor = 'Kevin Bacon (I)'",
+          "and v2.actor = 'Michael J. Fox (I)'"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1681805259059,
+          "endTime" : 1681805260802,
+          "interpreter" : "pgql-pgx",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "{\"table\":\"ID1\\tACTOR1\\tBACON_NUMBER\\tCONNECT_PATH\\tID2\\tACTOR2\\n638\\tKevin Bacon (I)\\t4\\t[Laurence Fishburne, Harrison Ford (I), Jeff O'Haco, Michael J. Fox (I)]\\t2671\\tMichael J. Fox (I)\",\"totalNumResults\":1}",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "order" : 3,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%pgql-pgx",
+          "select v1.id as id1, v1.actor as actor1, count(e) as bacon_number, array_agg(hop.id) as connect_path_id, array_agg(hop.actor) as connect_path, v2.id as id2, v2.actor as actor2",
+          "from match all shortest (v1) (-[e]-> (hop))* (v2)",
+          "on bacon_co_actor_top250_graph",
+          "where v1.actor = 'Kevin Bacon (I)'",
+          "and v2.actor = 'Michael J. Fox (I)'"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : "[{\"table\":{\"pageSize\":25,\"lastColumns\":[\"ID1\",\"ACTOR1\",\"BACON_NUMBER\",\"CONNECT_PATH\",\"ID2\",\"ACTOR2\"]}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1681805290673,
+          "endTime" : 1681805292173,
+          "interpreter" : "pgql-pgx",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "{\"table\":\"ID1\\tACTOR1\\tBACON_NUMBER\\tCONNECT_PATH_ID\\tCONNECT_PATH\\tID2\\tACTOR2\\n638\\tKevin Bacon (I)\\t4\\t[5372, 6554, 1843, 2671]\\t[Laura Linney, Philip Baker Hall, Tom Tangen, Michael J. Fox (I)]\\t2671\\tMichael J. Fox (I)\\n638\\tKevin Bacon (I)\\t4\\t[2234, 3454, 2672, 2671]\\t[Shawn Fogarty, Jack Nicholson (I), Christopher Lloyd (I), Michael J. Fox (I)]\\t2671\\tMichael J. Fox (I)\\n638\\tKevin Bacon (I)\\t4\\t[3820, 3454, 2672, 2671]\\t[Tom Kemp (I), Jack Nicholson (I), Christopher Lloyd (I), Michael J. Fox (I)]\\t2671\\tMichael J. Fox (I)\\n638\\tKevin Bacon (I)\\t4\\t[5375, 3454, 2672, 2671]\\t[Mackenzie Hawe, Jack Nicholson (I), Christopher Lloyd (I), Michael J. Fox (I)]\\t2671\\tMichael J. Fox (I)\\n638\\tKevin Bacon (I)\\t4\\t[7978, 3420, 1843, 2671]\\t[Tim Robbins (I), Don McManus (I), Tom Tangen, Michael J. Fox (I)]\\t2671\\tMichael J. Fox (I)\\n638\\tKevin Bacon (I)\\t4\\t[3829, 8414, 1843, 2671]\\t[Marcia Gay Harden, Jena Malone, Tom Tangen, Michael J. Fox (I)]\\t2671\\tMichael J. Fox (I)\\n638\\tKevin Bacon (I)\\t4\\t[11402, 5135, 3523, 2671]\\t[Laurence Fishburne, Harrison Ford (I), Jeff O'Haco, Michael J. Fox (I)]\\t2671\\tMichael J. Fox (I)\\n638\\tKevin Bacon (I)\\t4\\t[11568, 3454, 2672, 2671]\\t[Robert Wahlberg (I), Jack Nicholson (I), Christopher Lloyd (I), Michael J. Fox (I)]\\t2671\\tMichael J. Fox (I)\\n638\\tKevin Bacon (I)\\t4\\t[7978, 4917, 11071, 2671]\\t[Tim Robbins (I), Ned Bellamy, Norman Alden, Michael J. Fox (I)]\\t2671\\tMichael J. Fox (I)\\n638\\tKevin Bacon (I)\\t4\\t[11402, 6481, 11071, 2671]\\t[Laurence Fishburne, G.D. Spradlin, Norman Alden, Michael J. Fox (I)]\\t2671\\tMichael J. Fox (I)\\n638\\tKevin Bacon (I)\\t4\\t[641, 3454, 2672, 2671]\\t[Eric Bruno Borgman, Jack Nicholson (I), Christopher Lloyd (I), Michael J. Fox (I)]\\t2671\\tMichael J. Fox (I)\",\"totalNumResults\":11}",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "order" : 4,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%pgql-pgx",
+          "select v1.id as id1, v1.actor as actor1, count(e) as bacon_number, array_agg(hop.actor) as connect_path, v2.id as id2, v2.actor as actor2",
+          "from match shortest (v1) (-[e]-> (hop))* (v2)",
+          "on bacon_co_actor_top250_graph",
+          "where v1.actor = 'Kevin Bacon (I)'",
+          "and v2.actor = 'Elzbieta Jasinska'"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1681805348633,
+          "endTime" : 1681805349935,
+          "interpreter" : "pgql-pgx",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "{\"table\":\"ID1\\tACTOR1\\tBACON_NUMBER\\tCONNECT_PATH\\tID2\\tACTOR2\\n638\\tKevin Bacon (I)\\t6\\t[Tim Robbins (I), Morgan Freeman (I), Liam Neeson, Maciej Kowalewski, Zbigniew Zamachowski, Elzbieta Jasinska]\\t2931\\tElzbieta Jasinska\",\"totalNumResults\":1}",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      }
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 # Ways to the Bacon
 
-This repository accompanies the presentation "Ways to the Bacon" ( https://bit.ly/bacon_pptx ) by Kim Berg Hansen.
+This repository accompanies the presentation "Ways to the Bacon" ( https://bit.ly/ways-to-bacon ) by Kim Berg Hansen.
 This branch (New2023) represents updated version co-created and co-presented with Hans Viehmann of Oracle.
 
 This is purely for demonstration. Use it at your own risk and be sure to understand it before using.
@@ -23,15 +23,24 @@ Folder scripts contain:
 
 * bacon_plsql_3.sql - Further modification attempting to reduce PGA usage by pipelining.
 
+* bacon_plsql_3b.sql - Even further modification attempting to reduce PGA even more by skipping connection path.
+
 * bacon_plsql_4.sql - Version that accepts both start and end actor and uses BFS from both ends until they meet.
 
 Folder notebooks contain:
 
-* bacon_small.dsnb - Zeppelin Notebook for Graph Studio with PGQL queries
+* Bacon_bacon_small.dsnb - Zeppelin Notebook for Graph Studio with PGQL queries for small dataset
 
 * bacon_small_pgql.txt - Text file with just the PGQL queries from the notebooks
 
-* bacon_top250.dsnb - Zeppelin Notebook for Graph Studio with PGQL queries
+* Bacon_bacon_top250.dsnb - Zeppelin Notebook for Graph Studio with PGQL queries for top250 dataset
 
 * bacon_top250_pgql.txt - Text file with just the PGQL queries from the notebooks
 
+* Bacon_bacon_full.dsnb - Zeppelin Notebook for Graph Studio with PGQL queries for full dataset
+
+* bacon_full_pgql.txt - Text file with just the PGQL queries from the notebooks
+
+* OUG Norway_Six Degrees of Kevin Bacon - Movies only.dsnb - Zeppelin Notebook for Graph Studio with more advanced PGQL
+
+* ImDB.json - Companion template to improve look-and-feel of actor/movie graphs

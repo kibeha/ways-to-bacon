@@ -207,6 +207,7 @@ as
 select rownum as id, movie from (
    select distinct movie
    from raw_imdb_full
+   where NOT upper(movie) like '%(TV)%' -- !! NOTE !! excluding TV shows for more meaningful analysis !!
 );
 
 alter table movies_full add (
@@ -261,7 +262,7 @@ alter table co_actors_full add (
 /*
 select count(*) from co_actors_full;
 
-218525184
+186713502
 */
 
 select *

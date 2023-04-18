@@ -178,7 +178,7 @@ join actors_top250 a2
 where a1.actor = 'Kevin Bacon (I)'
 order by bs.bacon# desc, bs.actor_id;
 
--- 11803 rows average 70 seconds
+-- 11803 rows average 45 seconds
 
 
 /*

@@ -1,0 +1,184 @@
+[
+  {
+    "name" : "Bacon/bacon_small",
+    "description" : null,
+    "tags" : null,
+    "version" : "6",
+    "layout" : "zeppelin",
+    "type" : "Default",
+    "readOnly" : false,
+    "snapshot" : false,
+    "template" : "dsrgmn3y",
+    "templateConfig" : "{\"visualization\":{\"filters\":[{\"_id\":1583324064459,\"type\":\"styling\",\"enabled\":true,\"conditions\":{\"operator\":\"and\",\"conditions\":[{\"property\":\"hiddenConnection\",\"operator\":\"*\",\"value\":\"\"}]},\"component\":\"edge\",\"target\":\"edge\",\"properties\":{\"colors\":[\"rgba(0, 0, 0, 0.1)\"],\"style\":[\"dashed\"],\"legendTitle\":[\"Hidden Connection\"]}},{\"_id\":1590499315755,\"type\":\"aggregation\",\"enabled\":true,\"conditions\":{\"operator\":\"and\",\"conditions\":[]},\"component\":\"vertex\",\"target\":\"vertex\",\"properties\":{},\"aggregation\":[{\"source\":\"\",\"type\":\"average\"}]}],\"version\":4}}",
+    "paragraphs" : [
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "order" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%pgql-pgx",
+          "select v2.id as actor_id, v2.actor, count(e) as bacon_number, array_agg(e.actor_id_1) as connect_pth",
+          "from match shortest (v1) -[e]->* (v2)",
+          "on bacon_co_actor_small_graph",
+          "where v1.actor = 'Kevin Bacon (I)'",
+          "order by bacon_number desc, v2.id"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : "[{\"raw\":{},\"visualization\":{\"graphAction\":{\"graphName\":\"BACON_SMALL\",\"lastRun\":1630407766660},\"viewTransform\":[[130.1099750105039,27.775532705556955,0.7759564985883151,1182]],\"lastColumns\":[\"ACTOR\"],\"version\":8},\"table\":{\"pageSize\":25,\"lastColumns\":[\"ACTOR_ID\",\"ACTOR\",\"BACON_NUMBER\",\"CONNECT_PTH\"]}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1681804932059,
+          "endTime" : 1681804932540,
+          "interpreter" : "pgql-pgx",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "{\"table\":\"ACTOR_ID\\tACTOR\\tBACON_NUMBER\\tCONNECT_PTH\\n87\\tChristopher Nolan\\t5\\t[130, 102, 146, 149, 87]\\n51\\tCourtney James Stewart\\t4\\t[27, 6, 9, 51]\\n77\\tDwight Yoakam\\t4\\t[27, 31, 52, 77]\\n114\\tWarren Zevon\\t4\\t[27, 31, 52, 114]\\n126\\tCary Grant\\t4\\t[27, 6, 76, 126]\\n135\\tBrigitte Bardot\\t4\\t[27, 6, 76, 135]\\n137\\tCharisma Carpenter\\t4\\t[75, 49, 36, 137]\\n143\\tPeter Cushing\\t4\\t[130, 3, 85, 143]\\n145\\tClark Gable\\t4\\t[27, 6, 76, 145]\\n149\\tAl Pacino\\t4\\t[130, 102, 146, 149]\\n4\\tSteve Berens\\t3\\t[27, 31, 4]\\n5\\tPaul Borghese\\t3\\t[27, 6, 5]\\n8\\tMickey Mantle\\t3\\t[27, 6, 8]\\n9\\tDenzel Washington\\t3\\t[27, 6, 9]\\n10\\tPatricia Arquette\\t3\\t[27, 31, 10]\\n12\\tEllen Lutter\\t3\\t[27, 31, 12]\\n15\\tReese Witherspoon\\t3\\t[27, 31, 15]\\n16\\tCatherine Zeta-Jones\\t3\\t[27, 6, 16]\\n17\\tWillie Allemang\\t3\\t[75, 148, 17]\\n18\\tYogi Berra\\t3\\t[27, 6, 18]\\n24\\tRhys Ifans\\t3\\t[27, 31, 24]\\n29\\tRocco Passionino\\t3\\t[27, 31, 29]\\n36\\tAlyson Hannigan\\t3\\t[75, 49, 36]\\n37\\tChristina Ricci\\t3\\t[27, 115, 37]\\n42\\tBlake Clark\\t3\\t[27, 31, 42]\\n43\\tErik Jan deBoer\\t3\\t[27, 31, 43]\\n45\\tCraig A. Mumma\\t3\\t[27, 31, 45]\\n46\\tKevin Nealon\\t3\\t[27, 31, 46]\\n47\\tPaul Reubens\\t3\\t[27, 35, 47]\\n52\\tBilly Bob Thornton\\t3\\t[27, 31, 52]\\n61\\tPerry Andelin Blake\\t3\\t[27, 31, 61]\\n62\\tDana Carvey\\t3\\t[27, 31, 62]\\n63\\tAllen Covert\\t3\\t[27, 31, 63]\\n66\\tCharles Grodin (I)\\t3\\t[75, 49, 66]\\n69\\tThomas Jane\\t3\\t[27, 6, 69]\\n70\\tHarvey Keitel\\t3\\t[27, 31, 70]\\n74\\tBabe Ruth\\t3\\t[27, 6, 74]\\n76\\tJames Stewart (I)\\t3\\t[27, 6, 76]\\n81\\tAlec Guinness\\t3\\t[27, 35, 81]\\n82\\tAnthony Michael Hall\\t3\\t[27, 6, 82]\\n85\\tChristopher Lee (I)\\t3\\t[130, 3, 85]\\n86\\tTom 'Tiny' Lister Jr.\\t3\\t[27, 31, 86]\\n88\\tBarry Pepper\\t3\\t[27, 6, 88]\\n89\\tRobert Smigel\\t3\\t[27, 31, 89]\\n90\\tDavid Sosalla\\t3\\t[27, 31, 90]\\n92\\tJohn E. Sullivan (I)\\t3\\t[27, 31, 92]\\n94\\tJennifer Crystal\\t3\\t[27, 6, 94]\\n98\\tHoward Berger\\t3\\t[27, 31, 98]\\n99\\tSteven Brill (I)\\t3\\t[27, 31, 99]\\n100\\tRobert F. Colesberry\\t3\\t[27, 6, 100]\\n106\\tJohn F. Kennedy\\t3\\t[27, 6, 106]\\n107\\tMarc Kolbe\\t3\\t[27, 31, 107]\\n108\\tRoger Maris\\t3\\t[27, 6, 108]\\n117\\tDiane Fischer (II)\\t3\\t[75, 148, 117]\\n119\\tBetsy Asher Hall\\t3\\t[27, 31, 119]\\n121\\tMerlyn Mantle\\t3\\t[27, 6, 121]\\n123\\tDinah Shore\\t3\\t[27, 6, 123]\\n125\\tRodney Dangerfield\\t3\\t[27, 31, 125]\\n131\\tOzzy Osbourne\\t3\\t[27, 31, 131]\\n146\\tJames Earl Jones\\t3\\t[130, 102, 146]\\n159\\tAnn Pala\\t3\\t[27, 31, 159]\\n1\\tAmir Ashayeri\\t2\\t[130, 1]\\n3\\tChristian Bale\\t2\\t[130, 3]\\n6\\tBilly Crystal\\t2\\t[27, 6]\\n7\\tWillie Garson\\t2\\t[130, 7]\\n11\\tErica Long\\t2\\t[130, 11]\\n13\\tMariah O'Brien\\t2\\t[130, 13]\\n14\\tKelly Teacher\\t2\\t[130, 14]\\n19\\tWilliam Buck (II)\\t2\\t[130, 19]\\n20\\tMohammad Reza Farhoudi\\t2\\t[130, 20]\\n21\\tDavid Fincher\\t2\\t[130, 21]\\n22\\tZac Hanson\\t2\\t[130, 22]\\n23\\tReginald C. Hayes\\t2\\t[130, 23]\\n25\\tSpike Jonze\\t2\\t[130, 25]\\n26\\tKevin Lee (IV)\\t2\\t[130, 26]\\n28\\tGreg O'Neill\\t2\\t[130, 28]\\n30\\tBrad Pitt\\t2\\t[130, 30]\\n31\\tAdam Sandler (I)\\t2\\t[27, 31]\\n32\\tGregory Sporleder\\t2\\t[130, 32]\\n33\\tChristine D. Coleman\\t2\\t[130, 33]\\n34\\tKacee DeMasi\\t2\\t[130, 34]\\n35\\tCarrie Fisher\\t2\\t[27, 35]\\n38\\tElizabeth Rivera\\t2\\t[130, 38]\\n39\\tPatti Tippo\\t2\\t[130, 39]\\n40\\tLance Bangs\\t2\\t[130, 40]\\n41\\tKevin Carroll\\t2\\t[130, 41]\\n44\\tMorgan Freeman (I)\\t2\\t[75, 44]\\n48\\tBill M. Ryusaki\\t2\\t[130, 48]\\n49\\tArnold Schwarzenegger\\t2\\t[75, 49]\\n50\\tAlireza Shayegan\\t2\\t[130, 50]\\n53\\tBill Wittman\\t2\\t[130, 53]\\n54\\tK.K. Dodds\\t2\\t[130, 54]\\n55\\tYvonne Montelius\\t2\\t[130, 55]\\n56\\tJessica Neuberger\\t2\\t[130, 56]\\n57\\tSara Rifkin\\t2\\t[130, 57]\\n58\\tWinona Ryder\\t2\\t[130, 58]\\n59\\tOctavia Spencer\\t2\\t[130, 59]\\n60\\tNed Bellamy\\t2\\t[130, 60]\\n64\\tKave Deymar\\t2\\t[130, 64]\\n65\\tRichard Fancy\\t2\\t[130, 65]\",\"totalNumResults\":161}",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "order" : 1,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%pgql-pgx",
+          "select v2.id as actor_id, v2.actor, count(e) as bacon_number, array_agg(e.actor_id_1) as connect_pth",
+          "from match shortest (v1) -[e]->* (v2)",
+          "on bacon_co_actor_small_graph",
+          "where v1.actor = 'Kevin Bacon (I)'",
+          "and v2.actor = 'Al Pacino'"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1681804953724,
+          "endTime" : 1681804954228,
+          "interpreter" : "pgql-pgx",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "{\"table\":\"ACTOR_ID\\tACTOR\\tBACON_NUMBER\\tCONNECT_PTH\\n149\\tAl Pacino\\t4\\t[130, 102, 146, 149]\",\"totalNumResults\":1}",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "order" : 2,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%pgql-pgx",
+          "select v1.id as id1, v1.actor as actor1, count(e) as bacon_number, array_agg(hop.actor) as connect_path, v2.id as id2, v2.actor as actor2",
+          "from match shortest (v1) (-[e]-> (hop))* (v2)",
+          "on bacon_co_actor_small_graph",
+          "where v1.actor = 'Kevin Bacon (I)'",
+          "and v2.actor = 'Al Pacino'"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1681804939490,
+          "endTime" : 1681804939996,
+          "interpreter" : "pgql-pgx",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "{\"table\":\"ID1\\tACTOR1\\tBACON_NUMBER\\tCONNECT_PATH\\tID2\\tACTOR2\\n2\\tKevin Bacon (I)\\t4\\t[John Malkovich, Danny Glover, James Earl Jones, Al Pacino]\\t149\\tAl Pacino\",\"totalNumResults\":1}",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "order" : 3,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%pgql-pgx",
+          "select v1.id as id1, v1.actor as actor1, count(e) as bacon_number, array_agg(hop.id) as connect_path_id, array_agg(hop.actor) as connect_path, v2.id as id2, v2.actor as actor2",
+          "from match all shortest (v1) (-[e]-> (hop))* (v2)",
+          "on bacon_co_actor_small_graph",
+          "where v1.actor = 'Kevin Bacon (I)'",
+          "and v2.actor = 'Al Pacino'"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1681804947499,
+          "endTime" : 1681804947940,
+          "interpreter" : "pgql-pgx",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "{\"table\":\"ID1\\tACTOR1\\tBACON_NUMBER\\tCONNECT_PATH_ID\\tCONNECT_PATH\\tID2\\tACTOR2\\n2\\tKevin Bacon (I)\\t4\\t[130, 102, 146, 149]\\t[John Malkovich, Danny Glover, James Earl Jones, Al Pacino]\\t149\\tAl Pacino\\n2\\tKevin Bacon (I)\\t4\\t[27, 6, 146, 149]\\t[Bill Murray (I), Billy Crystal, James Earl Jones, Al Pacino]\\t149\\tAl Pacino\\n2\\tKevin Bacon (I)\\t4\\t[27, 102, 146, 149]\\t[Bill Murray (I), Danny Glover, James Earl Jones, Al Pacino]\\t149\\tAl Pacino\\n2\\tKevin Bacon (I)\\t4\\t[27, 35, 146, 149]\\t[Bill Murray (I), Carrie Fisher, James Earl Jones, Al Pacino]\\t149\\tAl Pacino\\n2\\tKevin Bacon (I)\\t4\\t[75, 49, 146, 149]\\t[Christian Slater, Arnold Schwarzenegger, James Earl Jones, Al Pacino]\\t149\\tAl Pacino\\n2\\tKevin Bacon (I)\\t4\\t[75, 35, 146, 149]\\t[Christian Slater, Carrie Fisher, James Earl Jones, Al Pacino]\\t149\\tAl Pacino\",\"totalNumResults\":6}",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      }
+    ]
+  }
+]
