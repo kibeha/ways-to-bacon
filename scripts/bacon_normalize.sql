@@ -59,18 +59,18 @@ create unique index cast_members_small_uq_idx on cast_members_small (movie_id, a
 create table co_actors_small (
    actor_id_1  number
  , actor_id_2  number
- , movies      blob check (movies is json)
+-- , movies      blob check (movies is json)
 );
 
 insert into co_actors_small (
    actor_id_1
  , actor_id_2
- , movies
+-- , movies
 )
 select
    cm1.actor_id as actor_id_1
  , cm2.actor_id as actor_id_2
- , json_arrayagg(cm1.movie_id returning blob) as movies
+-- , json_arrayagg(cm1.movie_id returning blob) as movies
 from cast_members_small cm1
 join cast_members_small cm2
    on cm2.movie_id = cm1.movie_id
@@ -150,18 +150,18 @@ create unique index cast_members_top250_uq_idx on cast_members_top250 (movie_id,
 create table co_actors_top250 (
    actor_id_1  number
  , actor_id_2  number
- , movies      blob check (movies is json)
+-- , movies      blob check (movies is json)
 );
 
 insert into co_actors_top250 (
    actor_id_1
  , actor_id_2
- , movies
+-- , movies
 )
 select
    cm1.actor_id as actor_id_1
  , cm2.actor_id as actor_id_2
- , json_arrayagg(cm1.movie_id returning blob) as movies
+-- , json_arrayagg(cm1.movie_id returning blob) as movies
 from cast_members_top250 cm1
 join cast_members_top250 cm2
    on cm2.movie_id = cm1.movie_id
@@ -268,4 +268,5 @@ select count(*) from co_actors_full;
 select *
 from actors_full actor
 where actor.actor = 'Kevin Bacon (I)';
+
 

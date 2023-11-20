@@ -9,7 +9,7 @@ This is purely for demonstration. Use it at your own risk and be sure to underst
 
 Folder scripts contain:
 
-* bacon_setup.sql - One method to load 3 files into tables via cloud storage. Read script for file URLs. You can load files another way if you want.
+* bacon_setup.sql - One method to load 3 files into tables via apex_web_service.make_rest_request. Read script for file URLs. You can load files another way if you want.
 
 * bacon_normalize.sql - Create normalized tables from the raw data.
 
@@ -26,6 +26,8 @@ Folder scripts contain:
 * bacon_plsql_3b.sql - Even further modification attempting to reduce PGA even more by skipping connection path.
 
 * bacon_plsql_4.sql - Version that accepts both start and end actor and uses BFS from both ends until they meet.
+
+* bacon_timing.sql - Script for multiple executions of each version to compage average execution times.
 
 Folder notebooks contain:
 

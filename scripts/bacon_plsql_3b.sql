@@ -70,7 +70,6 @@ join actors_small a2
 where a1.actor = 'Kevin Bacon (I)'
 order by bs.bacon# desc, bs.actor_id;
 
--- 161 rows average 0.1 seconds
 
 /*
 PL/SQL Breadth-First on top250 file
@@ -123,7 +122,6 @@ join actors_top250 a2
 where a1.actor = 'Kevin Bacon (I)'
 order by bs.bacon# desc, bs.actor_id;
 
--- 11803 rows average 7 seconds
 
 
 /*
@@ -176,6 +174,4 @@ join actors_full a2
    on a2.id = bs.actor_id
 where a1.actor = 'Kevin Bacon (I)'
 order by bs.bacon# desc, bs.actor_id;
-
--- 2413031 rows 
 

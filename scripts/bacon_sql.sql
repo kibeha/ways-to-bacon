@@ -57,7 +57,6 @@ join actors_small a
 where r.rn = 1
 order by r.bacon# desc, r.actor_id;
 
--- 161 rows average 0.1 seconds
 
 
 /*
@@ -105,10 +104,6 @@ join actors_top250 a
 where r.rn = 1
 order by r.bacon# desc, r.actor_id;
 
--- 11803 rows in 10 minutes
-
--- On Always Free might get:
--- ORA-65114: space usage in container is too high
 
 
 /*

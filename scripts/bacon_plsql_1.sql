@@ -13,7 +13,7 @@ Types for table function
 create or replace type shortest_path as object (
    actor_id       number
  , bacon#         number
- , connect_path   clob
+ , connect_path   varchar2(100)
 )
 /
 create or replace type shortest_paths as table of shortest_path
@@ -66,7 +66,7 @@ begin
   end loop;
  
   result.extend;
-  result(1) := shortest_path(start_actor, 0, to_clob(start_actor));
+  result(1) := shortest_path(start_actor, 0, start_actor);
   cleanup(start_actor);
   seq := 1;
   
@@ -98,7 +98,6 @@ join actors_small a2
 where a1.actor = 'Kevin Bacon (I)'
 order by bs.bacon# desc, bs.actor_id;
 
--- 161 rows average 0.1 seconds
 
 /*
 PL/SQL Breadth-First on top250 file
@@ -146,7 +145,7 @@ begin
   end loop;
  
   result.extend;
-  result(1) := shortest_path(start_actor, 0, to_clob(start_actor));
+  result(1) := shortest_path(start_actor, 0, start_actor);
   cleanup(start_actor);
   seq := 1;
   
@@ -178,11 +177,12 @@ join actors_top250 a2
 where a1.actor = 'Kevin Bacon (I)'
 order by bs.bacon# desc, bs.actor_id;
 
--- 11803 rows average 45 seconds
 
 
 /*
 PL/SQL Breadth-First on full file
+
+ORA-04036: PGA memory used by the instance exceeds PGA_AGGREGATE_LIMIT
 */
 
 create or replace function bacon1_full(
@@ -226,7 +226,7 @@ begin
   end loop;
  
   result.extend;
-  result(1) := shortest_path(start_actor, 0, to_clob(start_actor));
+  result(1) := shortest_path(start_actor, 0, start_actor);
   cleanup(start_actor);
   seq := 1;
   
@@ -258,4 +258,3 @@ join actors_full a2
 where a1.actor = 'Kevin Bacon (I)'
 order by bs.bacon# desc, bs.actor_id;
 
--- ORA-04036: PGA memory used by the instance exceeds PGA_AGGREGATE_LIMIT

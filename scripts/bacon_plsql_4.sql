@@ -32,7 +32,7 @@ Types for table function
 create or replace type shortest_path as object (
    actor_id       number
  , bacon#         number
- , connect_path   clob
+ , connect_path   varchar2(100)
 )
 /
 create or replace type shortest_paths as table of shortest_path
@@ -77,12 +77,12 @@ as
   end;
 begin
   result1.extend;
-  result1(1) := shortest_path(start_actor, 0, to_clob(start_actor));
+  result1(1) := shortest_path(start_actor, 0, start_actor);
   found1(start_actor) := 1;
   seq1 := 1;
 
   result2.extend;
-  result2(1) := shortest_path(end_actor, 0, to_clob(end_actor));
+  result2(1) := shortest_path(end_actor, 0, end_actor);
   found2(end_actor) := 1;
   seq2 := 1;
   
@@ -156,7 +156,6 @@ cross apply bacon4_small(a1.id, a2.id) bs
 where a1.actor = 'Kevin Bacon (I)'
 and a2.actor = 'Al Pacino';
 
--- 1 row average 0.05 seconds
 
 
 /*
@@ -197,12 +196,12 @@ as
   end;
 begin
   result1.extend;
-  result1(1) := shortest_path(start_actor, 0, to_clob(start_actor));
+  result1(1) := shortest_path(start_actor, 0, start_actor);
   found1(start_actor) := 1;
   seq1 := 1;
 
   result2.extend;
-  result2(1) := shortest_path(end_actor, 0, to_clob(end_actor));
+  result2(1) := shortest_path(end_actor, 0, end_actor);
   found2(end_actor) := 1;
   seq2 := 1;
   
@@ -276,7 +275,6 @@ cross apply bacon4_top250(a1.id, a2.id) bs
 where a1.actor = 'Kevin Bacon (I)'
 and a2.actor = 'Michael J. Fox (I)';
 
--- 1 row average 0.05 seconds
 
 select
    bs.actor_id
@@ -289,7 +287,6 @@ cross apply bacon4_top250(a1.id, a2.id) bs
 where a1.actor = 'Kevin Bacon (I)'
 and a2.actor = 'Elzbieta Jasinska';
 
--- 1 row average 0.075 seconds
 
 
 /*
@@ -330,12 +327,12 @@ as
   end;
 begin
   result1.extend;
-  result1(1) := shortest_path(start_actor, 0, to_clob(start_actor));
+  result1(1) := shortest_path(start_actor, 0, start_actor);
   found1(start_actor) := 1;
   seq1 := 1;
 
   result2.extend;
-  result2(1) := shortest_path(end_actor, 0, to_clob(end_actor));
+  result2(1) := shortest_path(end_actor, 0, end_actor);
   found2(end_actor) := 1;
   seq2 := 1;
   
@@ -398,6 +395,7 @@ begin
 end bacon4_full;
 /
 
+-- Bacon# 2:
 select
    bs.actor_id
  , a2.actor
@@ -409,9 +407,8 @@ cross apply bacon4_full(a1.id, a2.id) bs
 where a1.actor = 'Kevin Bacon (I)'
 and a2.actor = 'Michael J. Fox (I)';
 
--- Bacon# 2 average 0.075 seconds
 
-
+-- Bacon# 3:
 select a1.*,
    bs.actor_id
  , a2.actor
@@ -423,9 +420,8 @@ cross apply bacon4_full(a1.id, a2.id) bs
 where a1.actor = 'Kevin Bacon (I)'
 and a2.actor = 'Brigitte Helm';
 
--- Bacon# 3 - average 0.2 seconds
 
-
+-- Also Bacon# 3 - but takes longer:
 select a1.*,
    bs.actor_id
  , a2.actor
@@ -437,9 +433,8 @@ cross apply bacon4_full(a1.id, a2.id) bs
 where a1.actor = 'Kevin Bacon (I)'
 and a2.actor = 'Eliane Tayar';
 
--- Also Bacon# 3 - average 6 seconds
 
-
+-- Bacon# 6:
 select a1.*,
    bs.actor_id
  , a2.actor
@@ -451,5 +446,4 @@ cross apply bacon4_full(a1.id, a2.id) bs
 where a1.actor = 'Kevin Bacon (I)'
 and a2.actor = 'Muhibbat Abdusalam';
 
--- Bacon# 6 - average 12 seconds
 
