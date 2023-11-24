@@ -121,6 +121,11 @@ order by r.bacon# desc, r.actor_id]'
       out('seconds: '||seconds||' - rows: '||cnt);
 
       return seconds;
+   exception
+      when others then
+         out('ERROR');
+         out(dbms_utility.format_error_backtrace);
+         return -999999;
    end;
    function exec (
       funcname    varchar2
@@ -133,6 +138,9 @@ order by r.bacon# desc, r.actor_id]'
       runtime_tot number := 0;
       runtime_avg number;
    begin
+      -- warmup
+      runtime := do_exec(funcname, tabsize, 0);
+      -- real runs
       for run# in 1..no_runs loop
          runtime := do_exec(funcname, tabsize, run#);
          runtime_tot := runtime_tot + runtime;
